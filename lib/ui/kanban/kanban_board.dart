@@ -16,6 +16,8 @@ class KanbanBoard extends StatelessWidget {
 
         return ShadTabs(
           value: status,
+          expandContent: true,
+          contentConstraints: BoxConstraints.expand(height: 0),
           tabs: KanbanStatus.values
               .map(
                 (e) => ShadTab(

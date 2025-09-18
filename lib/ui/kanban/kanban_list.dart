@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:kanban/enums/kanban_status.dart';
+import 'package:kanban/ui/common/status_island.dart';
 
 class KanbanList extends StatelessWidget {
   final KanbanStatus status;
@@ -8,6 +11,36 @@ class KanbanList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text(status.label, style: TextStyle(fontSize: 40)));
+    return Container(
+      padding: EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: status.backgorundColor,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Column(
+        crossAxisAlignment: .stretch,
+        spacing: 10,
+        children: [
+          StatusIsland(status: status),
+          Expanded(
+            child: ListView.separated(
+              itemCount: 10000,
+              shrinkWrap: true,
+              separatorBuilder: (context, index){
+                return SizedBox(height: 10);
+              },
+              itemBuilder: (context, index){
+                return Text(
+                  '${DateTime.now()}', 
+                style: TextStyle(
+                  fontSize: 20
+                ),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
