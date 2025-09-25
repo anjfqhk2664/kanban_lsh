@@ -27,4 +27,10 @@ extension KanbanStatusExtention on KanbanStatus {
     KanbanStatus.progress => LucideIcons.circlePlay,
     KanbanStatus.done => LucideIcons.circleCheck,
   };
+
+  IconData get nextIcon => switch (this) {
+    KanbanStatus.todo => LucideIcons.circlePlay,
+    KanbanStatus.progress => LucideIcons.circlePause,
+    KanbanStatus.done => LucideIcons.circleCheck,
+  };
 }
