@@ -11,13 +11,6 @@ class KanbanScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          final provider = context.read<KanbanProvider>();
-          provider.kanbanStatus;
-        },
-        child: Icon(LucideIcons.plus),
-      ),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(25),

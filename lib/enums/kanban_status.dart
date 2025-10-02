@@ -34,3 +34,31 @@ extension KanbanStatusExtention on KanbanStatus {
     KanbanStatus.done => LucideIcons.circleCheck,
   };
 }
+
+class KanbanUtil {
+  static KanbanStatus stringToStatus(String value) {
+    // 방법1) if-else
+    // KanbanStatus status;
+    // if (value == 'progress') {
+    //   status = KanbanStatus.progress;
+    // } else if (value == 'done') {
+    //   status = KanbanStatus.done;
+    // } else {
+    //   status = KanbanStatus.todo;
+    // }
+    // return status;
+
+    // 방법2) switch-case
+    // return switch (value) {
+    //   'progress' => KanbanStatus.progress,
+    //   'done' => KanbanStatus.done,
+    //   _ => KanbanStatus.todo,
+    // };
+
+    // 방법3) 이건모지..?
+    return KanbanStatus.values.firstWhere(
+      (e) => e.name == value,
+      orElse: () => KanbanStatus.todo,
+    );
+  }
+}
